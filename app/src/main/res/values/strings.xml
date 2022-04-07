@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Sqlite_Aplicacion</string>
+    <string name="crear">Crear Base</string>
+    <string name="id">Id</string>
+    <string name="nombre">Nombre</string>
+    <string name="correo">Correo</string>
+    <string name="grabar">Grabar</string>
+    <string name="apellido">Apellido</string>
+    <string name="telefono">Telefono</string>
+    <string name="editar">Editar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="listar">Listar</string>
+    <string name="edad">Edad</string>
+    <string name="fecha_de_nacimiento">Fecha de nacimiento</string>
 </resources>

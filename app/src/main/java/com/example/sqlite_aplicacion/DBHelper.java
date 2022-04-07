@@ -10,24 +10,24 @@ import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
     public DBHelper(Context context) {
-        super(context, "Userdata.db", null, 1);
+        super(context, "Personas.db", null, 1);
     }
     @Override
     public void onCreate(SQLiteDatabase DB) {
-        DB.execSQL("create Table Personas(name TEXT primary key, lastname TEXT, contact TEXT, dob TEXT)");
+        DB.execSQL("create Table Personas(name TEXT primary key, lastname TEXT, contact TEXT,correo TEXT)");
     }
     @Override
     public void onUpgrade(SQLiteDatabase DB, int i, int ii) {
-        DB.execSQL("drop Table if exists Personas");
+        DB.execSQL("drop Table  Personas");
     }
-    public Boolean insertuserdata(String name,String lastname, String contact, String dob)
+    public Boolean insertuserdata(String name,String lastname, String contact, String correo)
     {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", name);
         contentValues.put("lastname",lastname);
         contentValues.put("contact", contact);
-        contentValues.put("dob", dob);
+        contentValues.put("correo",correo);
         long result=DB.insert("Personas", null, contentValues);
         if(result==-1){
             return false;
@@ -35,13 +35,13 @@ public class DBHelper extends SQLiteOpenHelper {
             return true;
         }
     }
-    public Boolean updateuserdata(String name,String lastname, String contact, String dob)
+    public Boolean updateuserdata(String name,String lastname, String contact,String correo)
     {
         SQLiteDatabase DB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("lastname",lastname);
         contentValues.put("contact", contact);
-        contentValues.put("dob", dob);
+        contentValues.put("correo",correo);
         Cursor cursor = DB.rawQuery("Select * from Personas where name = ?", new String[]{name});
         if (cursor.getCount() > 0) {
             long result = DB.update("Personas", contentValues, "name=?", new String[]{name});
